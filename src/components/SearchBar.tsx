@@ -14,7 +14,7 @@ const SearchBar = () => {
   const [params, setParams] = useSearchParams();
   const [make, setMake] = useState<string>("");
   const [model, setModel] = useState<string>("");
-  console.log(params);
+
   // sayfa her render olduğunda useMemo sayesinde tekrar hesaplama yapmayacak.
   const options = useMemo(
     () => makes.map((make) => ({ label: make, value: make })),
@@ -22,8 +22,9 @@ const SearchBar = () => {
   );
 
   const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    //  url'i güncelle
+    e.preventDefault(); // Varsayılan form gönderme davranışını engelle
+
+    // URL parametrelerini küçük harflerle güncelle
     setParams({ make: make.toLowerCase(), model: model.toLowerCase() });
   };
 
@@ -32,8 +33,11 @@ const SearchBar = () => {
       <div className="searchbar__item">
         <ReactSelect
           onChange={(selected) => selected && setMake(selected.value)}
+          defaultValue={{
+            label: params.get("make") || "",
+            value: params.get("make") || "",
+          }}
           className="w-full text-black"
-          placeholder="Marka Seçiniz..."
           options={options}
         />
         <Button designs="sm:hidden" />
@@ -47,8 +51,9 @@ const SearchBar = () => {
         />
         <input
           onChange={(e) => setModel(e.target.value)}
+          defaultValue={params.get("model") || ""}
           className="searchbar__input rounded text-black"
-          placeholder="Ör: Civic"
+          placeholder="Örn: m4"
           type="text"
         />
         <Button designs="sm:ml-6" />
