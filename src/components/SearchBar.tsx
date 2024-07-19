@@ -14,7 +14,7 @@ const SearchBar = () => {
   const [params, setParams] = useSearchParams();
   const [make, setMake] = useState<string>("");
   const [model, setModel] = useState<string>("");
-
+  console.log(params);
   // sayfa her render olduğunda useMemo sayesinde tekrar hesaplama yapmayacak.
   const options = useMemo(
     () => makes.map((make) => ({ label: make, value: make })),
@@ -24,7 +24,7 @@ const SearchBar = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     //  url'i güncelle
-    setParams({ make, model });
+    setParams({ make: make.toLowerCase(), model: model.toLowerCase() });
   };
 
   return (
