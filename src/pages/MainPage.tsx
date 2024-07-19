@@ -8,7 +8,7 @@ import Filter from "../components/Filter";
 import Warning from "../components/Warning";
 import { useSearchParams } from "react-router-dom";
 import LoadMore from "../components/LoadMore";
-import { fuels, years } from "../utils/constants";
+import { CyOptions, fuels, years } from "../utils/constants";
 
 const MainPage = () => {
   const [cars, setCars] = useState<ICarProps[] | null>(null);
@@ -41,6 +41,7 @@ const MainPage = () => {
           <div className="home__filter-container">
             <Filter title="Yakıt Tipi" options={fuels} />
             <Filter title="Üretim Yılı" options={years} />
+            <Filter title="Silindir Sayısı" options={CyOptions} />
           </div>
         </div>
 

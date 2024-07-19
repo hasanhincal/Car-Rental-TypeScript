@@ -84,3 +84,46 @@ export const colors = [
   "pspc0103",
   "pspc0020",
 ];
+
+export const CyOptions = [
+  {
+    value: "",
+    label: "Silindir Sayısı",
+  },
+  {
+    value: 2,
+    label: "2 Silindir",
+  },
+  {
+    value: 3,
+    label: "3 Silindir",
+  },
+  {
+    value: 4,
+    label: "4 Silindir",
+  },
+  {
+    value: 5,
+    label: "5 Silindir",
+  },
+  {
+    value: 6,
+    label: "6 Silindir",
+  },
+  {
+    value: 8,
+    label: "8 Silindir",
+  },
+  {
+    value: 10,
+    label: "10 Silindir",
+  },
+  {
+    value: 12,
+    label: "12 Silindir",
+  },
+  {
+    value: 16,
+    label: "16 Silindir",
+  },
+];

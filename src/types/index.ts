@@ -23,3 +23,8 @@ export interface ICarProps {
   transmission: "m" | "a";
   year: number;
 }
+// silindir sayısı tipi
+// export interface ICOptions {
+//   label: string;
+//   value: number;
+// }

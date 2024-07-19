@@ -10,6 +10,7 @@ type Params = {
   model?: string;
   year?: string;
   fuel_type?: string;
+  cylinders?: string;
 };
 
 export const fetchCars = async ({
@@ -18,9 +19,10 @@ export const fetchCars = async ({
   model = "m4",
   year = "",
   fuel_type = "",
+  cylinders = "",
 }: Params): Promise<ICarProps[]> => {
   const res = await fetch(
-    `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${make}&model=${model}&fuel_type=${fuel_type}&year=${year}&limit=${limit}`,
+    `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${make}&model=${model}&fuel_type=${fuel_type}&year=${year}&limit=${limit}&cylinders=${cylinders}`,
     {
       headers,
     }
