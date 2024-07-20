@@ -12,8 +12,8 @@ const Button = ({ designs }: { designs?: string }) => {
 };
 const SearchBar = () => {
   const [params, setParams] = useSearchParams();
-  const [make, setMake] = useState<string>("");
-  const [model, setModel] = useState<string>("");
+  const [make, setMake] = useState<string>(params.get("make") as string);
+  const [model, setModel] = useState<string>(params.get("model") as string);
 
   // sayfa her render olduğunda useMemo sayesinde tekrar hesaplama yapmayacak.
   const options = useMemo(
@@ -34,8 +34,8 @@ const SearchBar = () => {
         <ReactSelect
           onChange={(selected) => selected && setMake(selected.value)}
           defaultValue={{
-            label: params.get("make") || "",
-            value: params.get("make") || "",
+            label: params.get("make") as string,
+            value: params.get("make") as string,
           }}
           className="w-full text-black"
           options={options}
@@ -51,7 +51,7 @@ const SearchBar = () => {
         />
         <input
           onChange={(e) => setModel(e.target.value)}
-          defaultValue={params.get("model") || ""}
+          defaultValue={model}
           className="searchbar__input rounded text-black"
           placeholder="Örn: m4"
           type="text"
