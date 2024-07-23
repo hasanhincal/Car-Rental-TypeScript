@@ -6,7 +6,6 @@ type Props = {
 };
 
 const LoadMore = ({ limit, handleClick }: Props) => {
-  console.log(limit);
   return (
     <div className="w-full flex-center my-10">
       {limit < 30 && (
