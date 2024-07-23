@@ -12,8 +12,10 @@ const Button = ({ designs }: { designs?: string }) => {
 };
 const SearchBar = () => {
   const [params, setParams] = useSearchParams();
-  const [make, setMake] = useState<string>(params.get("make") as string);
-  const [model, setModel] = useState<string>(params.get("model") as string);
+  const [make, setMake] = useState<string | null>(params.get("make") as string);
+  const [model, setModel] = useState<string | null>(
+    params.get("model") as string
+  );
 
   // sayfa her render olduğunda useMemo sayesinde tekrar hesaplama yapmayacak.
   const options = useMemo(
@@ -25,7 +27,10 @@ const SearchBar = () => {
     e.preventDefault(); // Varsayılan form gönderme davranışını engelle
 
     // URL parametrelerini küçük harflerle güncelle
-    setParams({ make: make.toLowerCase(), model: model.toLowerCase() });
+    setParams({
+      make: make ? make.toLowerCase() : "",
+      model: model ? model.toLowerCase() : "",
+    });
   };
 
   return (
@@ -51,7 +56,7 @@ const SearchBar = () => {
         />
         <input
           onChange={(e) => setModel(e.target.value)}
-          defaultValue={model}
+          defaultValue={model as string}
           className="searchbar__input rounded text-black"
           placeholder="Örn: m4"
           type="text"
