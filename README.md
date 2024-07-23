@@ -14,7 +14,7 @@ Bu proje, TypeScript, Framer Motion, React Router DOM ve React Select kütüphan
 
 ## For Live Project
 
-https://www.safewebsite.store/
+https://car-rental-typescript-murex.vercel.app/
 
 ## Project Gif
 
